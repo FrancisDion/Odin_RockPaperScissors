@@ -1,32 +1,34 @@
-// Get Human's Choice
-let getHumanChoice = () => {
-    let humanChoice = (prompt("Rock, Paper, Scissors?").toLowerCase());
-    console.log(humanChoice);
+let playGame = () => {
+    const humanChoice = getHumanChoice();
+    const computerChoice = getComputerChoice();
+    findWinner(humanChoice, computerChoice);
 }
 
-// Get Computer's choice
+let getHumanChoice = () => {
+    let humanChoice = (prompt("Rock, Paper, Scissors").toLowerCase());
+    console.log("Human choice: " + humanChoice);
+    return humanChoice;
+}
+
 let getComputerChoice = () => {
     let computerChoice = Math.floor(Math.random() * 3);
 
-    switch (computerChoice) {
-        case 0:
-            computerChoice = "rock";
-            break;
-        case 1:
-            computerChoice = "paper";
-            break;
-        case 2:
-            computerChoice = "scissors";
-            break;
-        default:
-            return computerChoice;
-    }
-    console.log(computerChoice);
+        switch (computerChoice) {
+            case 0:
+                console.log("Computer: Rock")
+                return "rock";
+            case 1:
+                console.log("Computer: Paper")
+                return "paper";
+            case 2:
+                console.log("Computer: Scissors")
+                return "scissors"
+            default:
+                return "";
+        }
 }
 
-// Check who win's
-
-let findWinner = () => {
+let findWinner = (humanChoice, computerChoice) => {
     if (humanChoice === "rock") {
 
         switch (computerChoice) {
@@ -47,12 +49,12 @@ let findWinner = () => {
                 console.log("You win!");
                 break;
             case "paper":
-                console.log("It's a tie!");
+                console.log("Its a tie!");
                 break;
             case "scissors":
                 console.log("You loose!");
                 break;
-        } 
+        }
     } else {
 
         switch (computerChoice) {
@@ -65,10 +67,8 @@ let findWinner = () => {
             case "scissors":
                 console.log("It's a tie!");
                 break;
-        }        
+        }
     }
 }
 
-getHumanChoice();
-getComputerChoice();
-findWinner();
+playGame();
